@@ -356,6 +356,10 @@ async def youtube(ctx):
 async def twitch(ctx):
     await ctx.send('https://www.twitch.tv/bumxlord')
 
+@bot.command(name='cats')
+async def twitch(ctx):
+    await ctx.send('ᓚᘏᗢ')
+
 @bot.command(name='ping')
 async def ping(ctx):
     latency = bot.latency * 1000
@@ -368,13 +372,22 @@ async def send_random_gif(ctx):
     embed.set_image(url=random_gif_url)
     await ctx.send(embed=embed)
 
-@bot.command(name='command_help')
+@bot.command(name='bans')
+async def bans(ctx):
+    print(f'Logged in as {bot.user}')
+    for guild in bot.guilds:
+        bans = await guild.bans()
+        ctx.send(f"{len(bans)} of user have been banned.")
+
+@bot.command(name='command_help ')
 async def commands(ctx):
     await ctx.send('''
 ```/command_help | list all commands
 /ping | sends ping of the bot
 /twitch_link | prints twitch link
 /youtube_link | prints youtube link
-/gifs | print random gif```''')
+/gifs | print random gif
+/cats | ᓚᘏᗢ
+/bans | sends num bans```''')
 
-bot.run('BOT TOKEN HERE') # <------------------------- PUT YOUR BOT TOKEN HERE 
+bot.run('PUT YOUR BOT TOKEN HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
