@@ -373,13 +373,12 @@ async def send_random_gif(ctx):
     await ctx.send(embed=embed)
 
 @bot.command(name='bans')
+@cmds.has_permissions(ban_members=True)
 async def bans(ctx):
-    print(f'Logged in as {bot.user}')
-    for guild in bot.guilds:
-        bans = await guild.bans()
-        ctx.send(f"{len(bans)} of user have been banned.")
+    bans = [ban async for ban in ctx.guild.bans()]
+    await ctx.send(f"{len(bans)} members have been banned from this server.")
 
-@bot.command(name='command_help ')
+@bot.command(name='command_help')
 async def commands(ctx):
     await ctx.send('''
 ```/command_help | list all commands
@@ -388,6 +387,6 @@ async def commands(ctx):
 /youtube_link | prints youtube link
 /gifs | print random gif
 /cats | ᓚᘏᗢ
-/bans | sends num bans```''')
+/bans | sends number of bans```''')
 
-bot.run('PUT YOUR BOT TOKEN HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
+bot.run('PUT_YOUR_BOT_TOKEN_HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
