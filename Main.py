@@ -3,7 +3,7 @@ import discord
 import random
 
 intents = discord.Intents.all()
-bot = cmds.Bot(command_prefix='/', intents=intents)
+bot = cmds.Bot(command_prefix='--', intents=intents)
 
 # Setup
 gif_urls = [
