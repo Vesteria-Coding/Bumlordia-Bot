@@ -3,7 +3,7 @@ import discord
 import random
 
 intents = discord.Intents.all()
-bot = cmds.Bot(command_prefix='--', intents=intents)
+bot = cmds.Bot(command_prefix='/', intents=intents)
 
 # Setup
 gif_urls = [
@@ -348,15 +348,15 @@ async def on_member_join(member):
 async def welcome(ctx, user: discord.Member):
     await ctx.send(f'{user.mention} Welcome To The Server!')
 
-@bot.command(name='youtube_link')
+@bot.command(name='youtube')
 async def youtube(ctx):
     await ctx.send('https://www.youtube.com/@DIGIT4LBUMLORD')
 
-@bot.command(name='twitch_link')
+@bot.command(name='twitch')
 async def twitch(ctx):
     await ctx.send('https://www.twitch.tv/bumxlord')
 
-@bot.command(name='cats')
+@bot.command(name='cat')
 async def twitch(ctx):
     await ctx.send('ᓚᘏᗢ')
 
@@ -365,28 +365,43 @@ async def ping(ctx):
     latency = bot.latency * 1000
     await ctx.send(f'Pong! `{latency:.2f}ms`')
 
-@bot.command(name='gifs')
+@bot.command(name='gif')
 async def send_random_gif(ctx):
     random_gif_url = random.choice(gif_urls)
     embed = discord.Embed(title=f"Here's a random GIF!")
     embed.set_image(url=random_gif_url)
     await ctx.send(embed=embed)
 
+@bot.command(name='bunny')
+async def ping(ctx):
+    await ctx.send(r'''
+(\(\
+( -.-)
+o_(")(")
+''')
+
+@bot.command(name='cat2')
+async def ping(ctx):
+    await ctx.send('ฅ^•ﻌ•^ฅ')
+
 @bot.command(name='bans')
 @cmds.has_permissions(ban_members=True)
 async def bans(ctx):
     bans = [ban async for ban in ctx.guild.bans()]
-    await ctx.send(f"{len(bans)} members have been banned from this server.")
+    await ctx.send(f"{len(bans)} Members Have Been Banned From This Server.")
 
 @bot.command(name='command_help')
 async def commands(ctx):
-    await ctx.send('''
-```--command_help | list all commands
+    await ctx.send(r'''
+```--help | list all commands
+--welcome | welcomes pinged user
 --ping | sends ping of the bot
---twitch_link | prints twitch link
---youtube_link | prints youtube link
---gifs | print random gif
---cats | ᓚᘏᗢ
+--twitch | prints twitch link
+--youtube | prints youtube link
+--gif | print random gif
+--cat | ᓚᘏᗢ
+--cat2 | ฅ^•ﻌ•^ฅ
+--bunny | sends bunny
 --bans | sends number of bans```''')
 
 bot.run('PUT_YOUR_BOT_TOKEN_HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
