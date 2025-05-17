@@ -3,7 +3,7 @@ import discord
 import random
 
 intents = discord.Intents.all()
-bot = cmds.Bot(command_prefix='--', intents=intents)
+bot = cmds.Bot(command_prefix=r'//', intents=intents)
 
 # Setup
 gif_urls = [
@@ -332,7 +332,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, cmds.CommandNotFound):
-        await ctx.send("That command doesn't exist. Try '--help' to see available commands.")
+        await ctx.send("That command doesn't exist. Try '//help' to see available commands.")
     else:
         # Optional: log or raise unhandled errors
         raise error
@@ -392,16 +392,16 @@ async def bans(ctx):
 
 @bot.command(name='command_help')
 async def commands(ctx):
-    await ctx.send(r'''
-```--help | list all commands
---welcome | welcomes pinged user
---ping | sends ping of the bot
---twitch | prints twitch link
---youtube | prints youtube link
---gif | print random gif
---cat | ᓚᘏᗢ
---cat2 | ฅ^•ﻌ•^ฅ
---bunny | sends bunny
---bans | sends number of bans```''')
+    await ctx.send('''
+```//help | list all commands
+//welcome | welcomes pinged user
+//ping | sends ping of the bot
+//twitch | prints twitch link
+//youtube | prints youtube link
+//gif | print random gif
+//cat | ᓚᘏᗢ
+//cat2 | ฅ^•ﻌ•^ฅ
+//bunny | sends bunny
+//bans | sends number of bans```''')
 
 bot.run('PUT_YOUR_BOT_TOKEN_HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
