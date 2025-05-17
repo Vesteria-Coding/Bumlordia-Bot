@@ -390,7 +390,7 @@ async def bans(ctx):
     bans = [ban async for ban in ctx.guild.bans()]
     await ctx.send(f"{len(bans)} Members Have Been Banned From This Server.")
 
-@bot.command(name='command_help')
+@bot.command(name='commands')
 async def commands(ctx):
     await ctx.send('''
 ```//commands | list all commands
