@@ -332,7 +332,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, cmds.CommandNotFound):
-        await ctx.send("That command doesn't exist. Try '//help' to see available commands.")
+        await ctx.send("That command doesn't exist. Try '//commands' to see available commands.")
     else:
         # Optional: log or raise unhandled errors
         raise error
@@ -393,7 +393,7 @@ async def bans(ctx):
 @bot.command(name='command_help')
 async def commands(ctx):
     await ctx.send('''
-```//help | list all commands
+```//commands | list all commands
 //welcome | welcomes pinged user
 //ping | sends ping of the bot
 //twitch | prints twitch link
