@@ -6,6 +6,7 @@ intents = discord.Intents.all()
 bot = cmds.Bot(command_prefix=r'//', intents=intents)
 
 # Setup
+ALLOWED_USER_ID = 12345678901234567890 # Replace With Actual User ID
 gif_urls = [
     "https://cdn.discordapp.com/attachments/1306727963433369681/1362954388867645532/wheres_my_toy_-_Made_with_Clipchamp.gif",
     "https://cdn.discordapp.com/attachments/1263420906034958358/1372297426781733004/BUMxLORD_bumxloTerrorLord.gif",
@@ -389,6 +390,14 @@ async def ping(ctx):
 async def bans(ctx):
     bans = [ban async for ban in ctx.guild.bans()]
     await ctx.send(f"{len(bans)} Members Have Been Banned From This Server.")
+
+@bot.command(name='stop')
+async def restricted_command(ctx):
+    if ctx.author.id == ALLOWED_USER_ID:
+        await ctx.send("Stoping Bot")
+        await bot.close()
+    else:
+        await ctx.send("You do not have permission to use this command.")
 
 @bot.command(name='commands')
 async def commands(ctx):
