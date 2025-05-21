@@ -1,6 +1,5 @@
 from discord.ext import commands as cmds
 import discord
-import asyncio
 import random
 
 intents = discord.Intents.all()
@@ -388,6 +387,7 @@ async def send_random_gif(ctx):
 
 @bot.command(name='rules')
 async def rules(ctx):
+    await ctx.message.delete()
     embed = discord.Embed(
         title="Server Rules",
         description="Please read and follow these rules carefully:",
@@ -423,17 +423,22 @@ async def restricted_command(ctx):
 
 @bot.command(name='commands')
 async def commands(ctx):
-    await ctx.send('''
-```//commands | list all commands
-//welcome | welcomes pinged user
-//ping | sends ping of the bot
-//twitch | prints twitch link
-//youtube | prints youtube link
-//gif | print random gif
-//cat | ᓚᘏᗢ
-//cat2 | ฅ^•ﻌ•^ฅ
-//bunny | sends bunny
-//bans | sends number of bans
-//rules | sends rules```''')
+    embed = discord.Embed(
+        title="Server Commands",
+        color=discord.Color.green()
+    )
+    embed.add_field(name="//commands", value="List all commands.", inline=False)
+    embed.add_field(name="//welcome", value="Welcomes pinged user.", inline=False)
+    embed.add_field(name="//ping", value="Sends ping of the bot.", inline=False)
+    embed.add_field(name="//twitch", value="Prints twitch link.", inline=False)
+    embed.add_field(name="//youtube", value="Prints youtube link.", inline=False)
+    embed.add_field(name="//gif ", value="Print random gif.", inline=False)
+    embed.add_field(name="//cat", value="ᓚᘏᗢ", inline=False)
+    embed.add_field(name="//cat2", value="ฅ^•ﻌ•^ฅ", inline=False)
+    embed.add_field(name="//bunny", value="Sends bunny.", inline=False)
+    embed.add_field(name="//bans", value="Sends number of bans.", inline=False)
+    embed.add_field(name="//rules", value="Sends rules.", inline=False)
+    # embed.add_field(name="6. Place Holder For Title", value="Place Holder For Description", inline=False)
+    await ctx.send(embed=embed)
 
 bot.run('PUT_YOUR_BOT_TOKEN_HERE')
