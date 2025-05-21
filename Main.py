@@ -1,9 +1,10 @@
 from discord.ext import commands as cmds
 import discord
+import asyncio
 import random
 
 intents = discord.Intents.all()
-bot = cmds.Bot(command_prefix=r'//', intents=intents)
+bot = cmds.Bot(command_prefix=r'//', intents=intents, case_insensitive=True)
 
 # Setup
 ALLOWED_USER_ID = 12345678901234567890 # Replace With Actual User ID
@@ -373,6 +374,27 @@ async def send_random_gif(ctx):
     embed.set_image(url=random_gif_url)
     await ctx.send(embed=embed)
 
+@bot.command(name='rules')
+async def rules(ctx):
+    embed = discord.Embed(
+        title="Server Rules",
+        description="Please read and follow these rules carefully:",
+        color=discord.Color.red()
+    )
+    embed.add_field(name="1. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="2. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="3. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="4. Place Holder For Title", value="Place Holder For Description",inline=False)
+    embed.add_field(name="5. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="6. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="7. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="8. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="9. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.add_field(name="10. Place Holder For Title", value="Place Holder For Description", inline=False)
+    # embed.add_field(name="6. Place Holder For Title", value="Place Holder For Description", inline=False)
+    embed.set_footer(text="Thanks for being part of Bumlordia!")
+
+    await ctx.send(embed=embed)
 @bot.command(name='bunny')
 async def ping(ctx):
     await ctx.send(r'''
