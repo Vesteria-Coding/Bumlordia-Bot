@@ -433,6 +433,7 @@ async def commands(ctx):
 //cat | ᓚᘏᗢ
 //cat2 | ฅ^•ﻌ•^ฅ
 //bunny | sends bunny
-//bans | sends number of bans```''')
+//bans | sends number of bans
+//rules | sends rules```''')
 
 bot.run('PUT_YOUR_BOT_TOKEN_HERE')
