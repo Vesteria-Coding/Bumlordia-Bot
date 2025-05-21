@@ -359,8 +359,20 @@ async def twitch(ctx):
     await ctx.send('https://www.twitch.tv/bumxlord')
 
 @bot.command(name='cat')
-async def twitch(ctx):
+async def cat(ctx):
     await ctx.send('ᓚᘏᗢ')
+
+@bot.command(name='cat2')
+async def cat2(ctx):
+    await ctx.send('ฅ^•ﻌ•^ฅ')
+
+@bot.command(name='bunny')
+async def bunny(ctx):
+    await ctx.send(r'''
+(\(\
+( -.-)
+o_(")(")
+''')
 
 @bot.command(name='ping')
 async def ping(ctx):
@@ -393,19 +405,7 @@ async def rules(ctx):
     embed.add_field(name="10. Place Holder For Title", value="Place Holder For Description", inline=False)
     # embed.add_field(name="6. Place Holder For Title", value="Place Holder For Description", inline=False)
     embed.set_footer(text="Thanks for being part of Bumlordia!")
-
     await ctx.send(embed=embed)
-@bot.command(name='bunny')
-async def ping(ctx):
-    await ctx.send(r'''
-(\(\
-( -.-)
-o_(")(")
-''')
-
-@bot.command(name='cat2')
-async def ping(ctx):
-    await ctx.send('ฅ^•ﻌ•^ฅ')
 
 @bot.command(name='bans')
 @cmds.has_permissions(ban_members=True)
@@ -435,4 +435,4 @@ async def commands(ctx):
 //bunny | sends bunny
 //bans | sends number of bans```''')
 
-bot.run('PUT_YOUR_BOT_TOKEN_HERE') # <------------------------- PUT YOUR BOT TOKEN HERE
+bot.run('PUT_YOUR_BOT_TOKEN_HERE')
